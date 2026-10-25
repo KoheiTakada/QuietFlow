@@ -144,7 +144,7 @@ public final class NotificationMonitor extends NotificationListenerService {
                 .setAutoCancel(level==Level.P1);
         if(openIntent!=null) b.setContentIntent(openIntent);
         if(level==Level.P1) b.setTimeoutAfter(12_000);
-        else b.setOnlyAlertOnce(true).setOngoing(false).setSilent(true);
+        else b.setOnlyAlertOnce(true).setOngoing(false).setDefaults(0); // Low-importance channel controls alerts.
         try {
             manager.notify("managed-"+key,Math.abs(key.hashCode()),b.build());
             return true;
